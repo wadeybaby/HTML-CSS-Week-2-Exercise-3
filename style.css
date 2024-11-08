@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    background-color: white;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Loading Animation */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    animation: fadeOut 1s forwards;
+    animation-delay: 1.3s;
+    z-index: 9999;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* Hero Section (animated background) */
+.hero {
+    height: 165px;
+    background: linear-gradient(45deg, #405467, #2a4c6e, #8e44ad);
+    background-size: 200% 200%;
+    animation: gradientBG 5s infinite;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%;}
+    50% { background-position: 100% 50%;}
+    100% { background-position: 0% 50%;}
+}
+
+/* Animated Navigation Menu */
+.nav-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #ff0;
+    transform: scale(1.1)
+}
+
+/* Product Section */
+.product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Animation Product Card (slide-in) */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 22%;
+    max-width: 22%;
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+    animation: slideIn 0.5s ease-in-out;
+    animation-delay: calc(0.2 * var(--card-index));
+    animation-fill-mode: backwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Hover Animation and Transforms forr Product Cards */
+.product-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.1);
+    animation: pulse 1s infinite;
+}
+
+.product-card h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Pulse Animation for CTA Buttons */
+.cta-button {
+    margin-top: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: grey;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: rgb(202, 82, 82);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.spinner-border {
+    animation: spinner 1s linear infinite;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    width: 50px;
+    height: 50px;
+}
+
+/* Make header and nav menu responsive */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 120px; 
+        padding: 20px;
+    }
+
+    /* Adjust the navigation menu for mobile */
+    .nav-menu {
+        position: relative;
+        top: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+
+    .nav-menu a {
+        font-size: 14px; 
+        padding: 10px;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-menu a:hover {
+        color: #ff0;
+        transform: none; /* Remove scale effect on hover */
+
+    /* Reduce font size for hero section title */
+    .hero h1 {
+        font-size: 24px; 
+    }
+
+    /* Adjust the product cards for smaller screens */
+    .product-card {
+        flex: 1 1 45%; 
+        max-width: 45%;
+    }
+}
+
+/* Ajust for very small screens */
+@media screen and (max-width: 480px) {
+    
+    .hero {
+        height: 100px; 
+        padding: 10px;
+    }
+
+    
+    .nav-menu ul {
+        gap: 8px;
+    }
+
+    .nav-menu a {
+        font-size: 12px; 
+        padding: 8px;
+    }
+
+    /* Product cards stack in one column on very small screens */
+    .product-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+}
+
